@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Shakespeare Sonnet Sorter</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet"> 
+        <link rel="stylesheet" href="style.css">
+        <link rel="icon" href="leaf-logo.ico">
+    </head>
+    <body>
+        <header>
+            <h1>Shakespeare Sonnet Sorter</h1>
+            <nav>
+                <form>
+                    <input type="number" id="number-input" placeholder="sonnet number" required />
+                    <button type="submit" id="number">sonnet number</button>
+                </form>
+                <form>
+                    <input type="text" id="word-input" placeholder="e.g. time" required />
+                    <button value="word" type="submit" id="word-search">search by word</button>
+                </form>
+                <form>
+                    <input type="number" id="divisible-input" placeholder="12" required />
+                    <button value="number" type="submit" id="divisible">divisible by</button>
+                </form>
+                <button type="button" id="fibo">fibonacci sequence</button>
+                <form>
+                    <input type="number" id="base-sequence-input" placeholder="0" required />
+                    <input type="text" id="sequence-input" placeholder="5,12,5" required />
+                    <button value="sequence" type="submit" id="sequence">proportional sequence</button>
+                </form>
+                <button type="button" id="randomize">random sonnet</button>
+                <button type="button" id="get-all">display all sonnets</button>
+                <button type="button" id="clear">clear</button>
+            </nav>
+            <p class="info">words</p>
+        </header>
+        <main>
+            <div class="poem-container" id="poem-container">
+            </div>
+        </main>
+    </body>
+    <script type="module" src="script.js"></script>
+</html>
