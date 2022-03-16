@@ -1,2 +1,3 @@
 # Shakespeare-Sonnet-Sorter
-Sonnet sorter
+
+Shakespare's sonnets, in whatever order you want.
