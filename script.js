@@ -2,14 +2,32 @@ import sonnetList from "./sonnets.js"
 
 const poemContainer = document.getElementById("poem-container")
 
+const open = document.getElementById("menu-btn")
+const nav = document.getElementById("navigation")
+const exit = document.getElementById("exit-btn")
+open.addEventListener("click", toggleMenu)
+exit.addEventListener("click", toggleMenu)
+
 document.getElementById("get-all").addEventListener("click", getAllSonnets)
 document.getElementById("number").addEventListener("click", getSonnetByNumber)
 document.getElementById("word-search").addEventListener("click", getSonnetsByWord)
 document.getElementById("divisible").addEventListener("click", getDivisibleSonnets)
 document.getElementById("fibo").addEventListener("click", getFibo)
+document.getElementById("range").addEventListener("click", getRange)
 document.getElementById("sequence").addEventListener("click", getSonnetSequence)
 document.getElementById("randomize").addEventListener("click", getRandomSonnet)
 document.getElementById("clear").addEventListener("click", defaultText)
+
+function toggleMenu(e) {
+  if (e.target.id === open.id) {
+    nav.classList.add("open-nav");
+    document.body.classList.add("body-overflow")
+  } 
+  if (e.target.id === exit.id) {
+    nav.classList.remove("open-nav");
+    document.body.classList.remove("body-overflow")
+  }
+}
 
 function getSonnetByNumber(e) {
   e.preventDefault()
@@ -31,8 +49,8 @@ function getSonnetsByWord(e) {
   const word = document.getElementById("word-input").value
   if (!e.target.value || !word) {
     return errorMessage()
-  }
-
+  }  
+  
   if (word !== null) {
     clear()
     sonnetList.sonnets.map(sonnet => {
@@ -40,7 +58,7 @@ function getSonnetsByWord(e) {
         let lowerLine = sonnet.lines[i].toLowerCase()
         if (lowerLine.includes(word.toLowerCase())) {
           return renderSonnet(sonnet.number)
-        }
+        }  
       }
     })
   } 
@@ -73,7 +91,22 @@ function getRandomSonnet() {
 function getFibo() {
   clear()
   let fiboList = [1,2,3,5,8,13,21,34,55,89,144]
-    fiboList.map(number => renderSonnet(number))
+  fiboList.map(number => renderSonnet(number))
+}
+
+function getRange(e) {
+  clear()
+  let startRange = document.getElementById("start-range-input").value
+  const endRange = document.getElementById("end-range-input").value
+  console.log(startRange,endRange)
+
+  if (!e.target.value || !startRange || !endRange) {
+    return errorMessage()
+  }
+  while (startRange <= endRange) {
+    renderSonnet(startRange)
+    startRange++
+  }
 }
 
 function getSonnetSequence(e) {
@@ -116,8 +149,9 @@ function defaultText() {
         <li><p><strong>Sonnet number</strong> will display your chosen sonnet number.</p></li>
         <li><p><strong>Search by word</strong> will display all sonnets that contain a word of your choosing.</p></li>
         <li><p><strong>Divisible by</strong> will display all sonnets divisible by the inputted number.</p></li>
+        <li><p><strong>Range between two</strong> takes two values, and returns all sonnets in range between the two, inclusive of both.</p>
+        <li><p><strong>Proportional sequence</strong> takes a base number, and a list of comma-separated numbers, such as <strong>5, 12, 5</strong>. It will display the sonnet with the base number, and then add your sequence of numbers all the way to 154, repeating them from the start if possible. So, with base 0 and sequence input 5, 12, 5, it will display sonnets <strong>5, 17, 22, 27, 39, 44, 49, 61</strong> until it gets to 154.
         <li><p><strong>Fibonacci</strong> will display all sonnets that follow the popular number sequence.</p></li>
-        <li><p><strong>Proportional sequence</strong> takes a base number, and a list of comma-separated numbers, such as <strong>5, 12, 5</strong>. It will display the sonnet with the base number, and then add your sequence of numbers all the way to 154, repeating them from the start if necessary. So, with base 0 and sequence input 5, 12, 5, it will display sonnets <strong>5, 17, 22, 27, 39, 44, 49, 61 until it reaches 154</strong>.
         <li><p><strong>Random sonnet</strong> will display a random sonnet.</p></li>
         <li><p><strong>Clear</strong> will bring you back to this menu.</p></li>
     </ul>
@@ -125,12 +159,22 @@ function defaultText() {
 }
 
 function renderSonnet(i) {
+  nav.classList.remove("open-nav");
+  document.body.classList.remove("body-overflow")
   if (i <= 154 && i > 0) {
     poemContainer.innerHTML += `<h2>Sonnet Number ${sonnetList.sonnets[i - 1].number}</h2>`
-    sonnetList.sonnets[i-1].lines.map(line => poemContainer.innerHTML += `<p>${line}</p>`)
+    sonnetList.sonnets[i-1].lines.map(line => {
+      if (sonnetList.sonnets[i-1].lines.indexOf(line) > 11) {
+        poemContainer.innerHTML += `<p>&emsp;&emsp;&emsp;&emsp;${line}</p>`
+      } else {
+        poemContainer.innerHTML += `<p>${line}</p>`
+      }
+    })
   } else {
     errorMessage()
   }
 }
 
 defaultText()
+
+

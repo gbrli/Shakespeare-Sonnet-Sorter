@@ -1,0 +1,13 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 17" width="28" height="17">
+	<title>menu-svg</title>
+	<defs>
+		<image  width="29" height="19" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB0AAAATBAMAAACetxtMAAAAAXNSR0IB2cksfwAAACdQTFRFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA3RL5tQAAAA10Uk5TAFDf/8+gQODQgO+Q8DlBijoAAAAzSURBVHicY2DAAoSMocAEwg+G8Y0TwHxxGNcCm27SAOdiYwQA2sdsjAwSGLgPI3EH3j4AXuMYyPH+8CIAAAAASUVORK5CYII="/>
+		<image  width="28" height="17" id="img2" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAARAQMAAAD0XV4JAAAAAXNSR0IB2cksfwAAAAZQTFRF9e3w9e3wU3jqKgAAAAJ0Uk5TAP9bkSK1AAAAHklEQVR4nGNg/P//AwOMeMCADfwHSfwHKflPlJIPAOmSIBzUXtpuAAAAAElFTkSuQmCC"/>
+	</defs>
+	<style>
+	</style>
+	<g id="menu">
+		<use id="Line_1" href="#img1" x="-1" y="-1"/>
+	</g>
+	<use id="Layer 1" href="#img2" x="0" y="0"/>
+</svg>

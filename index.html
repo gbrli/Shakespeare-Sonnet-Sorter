@@ -12,36 +12,53 @@
     </head>
     <body>
         <header>
-            <h1>Shakespeare Sonnet Sorter</h1>
-            <nav>
-                <form>
-                    <input type="number" id="number-input" placeholder="sonnet number" required />
-                    <button type="submit" id="number">sonnet number</button>
-                </form>
-                <form>
-                    <input type="text" id="word-input" placeholder="e.g. time" required />
-                    <button value="word" type="submit" id="word-search">search by word</button>
-                </form>
-                <form>
-                    <input type="number" id="divisible-input" placeholder="12" required />
-                    <button value="number" type="submit" id="divisible">divisible by</button>
-                </form>
-                <button type="button" id="fibo">fibonacci sequence</button>
-                <form>
-                    <input type="number" id="base-sequence-input" placeholder="0" required />
-                    <input type="text" id="sequence-input" placeholder="5,12,5" required />
-                    <button value="sequence" type="submit" id="sequence">proportional sequence</button>
-                </form>
-                <button type="button" id="randomize">random sonnet</button>
-                <button type="button" id="get-all">display all sonnets</button>
-                <button type="button" id="clear">clear</button>
-            </nav>
-            <p class="info">words</p>
+            <h1>Shakespeare Sonnet Sorter <img src="menu.svg" class="menu" id="menu-btn" alt="open menu">
+            </h1>
         </header>
-        <main>
-            <div class="poem-container" id="poem-container">
-            </div>
-        </main>
+
+        <div class="content-wrapper">
+            <nav id="navigation">
+                <!-- <p id="open"></p>
+                <p id="close">X</p> -->
+                <ul>
+                    <li class="exit" id="exit-btn">
+                        <a href="#"><img class="exit" id="exit-btn" src="exit.svg"></a>
+                    </li>
+                </ul>
+                <div class="forms">
+                    <form>
+                        <input type="number" id="number-input" placeholder="number" required />
+                        <button type="submit" id="number">sonnet number</button>
+                    </form>
+                    <form>
+                        <input type="text" id="word-input" placeholder="e.g. siren" required />
+                        <button value="word" type="submit" id="word-search">search by word</button>
+                    </form>
+                    <form>
+                        <input type="number" id="divisible-input" placeholder="12" required />
+                        <button value="number" type="submit" id="divisible">divisible by</button>
+                    </form>
+                    <form id="range-form">
+                        <input type="number" id="start-range-input" placeholder="70" required />
+                        <input type="text" id="end-range-input" placeholder="90" required />
+                        <button value="range" type="submit" id="range">range between two</button>
+                    </form>
+                    <form id="sequence-form">
+                        <input type="number" id="base-sequence-input" placeholder="0" required />
+                        <input type="text" id="sequence-input" placeholder="5,12,5" required />
+                        <button value="sequence" type="submit" id="sequence">proportional sequence</button>
+                    </form>
+                    <button type="button" id="fibo">fibonacci sequence</button>
+                    <button type="button" id="randomize">random sonnet</button>
+                    <button type="button" id="get-all">display all sonnets</button>
+                    <button type="button" id="clear">clear</button>
+                </div>
+            </nav>
+            <main>
+                <div class="poem-container" id="poem-container">
+                </div>
+            </main>
+        </div>
     </body>
     <script type="module" src="script.js"></script>
 </html>
