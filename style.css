@@ -25,6 +25,7 @@ h1 {
     color: #F5EDF0;
     margin: 0;
     padding: 1em;
+    padding-right: 3em;
 }
 
 h2 {
@@ -48,6 +49,15 @@ p {
     font-size: 1.1rem;
     line-height: 1;
     letter-spacing: 1px;
+}
+
+a {
+    text-decoration: none;
+    color: #F5EDF0;
+}
+
+a:hover {
+    color: #D0ADA7
 }
 
 header {
@@ -78,6 +88,12 @@ nav button {
     padding: .5em 1em;
     margin: .5em 0;
     display: block;
+}
+
+button:hover,
+button:focus {
+    background-color: #400000;
+    color: #F5EDF0;
 }
 
 .open-nav,

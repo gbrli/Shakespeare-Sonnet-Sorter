@@ -8,6 +8,7 @@ const exit = document.getElementById("exit-btn")
 open.addEventListener("click", toggleMenu)
 exit.addEventListener("click", toggleMenu)
 
+document.getElementById("title-link").addEventListener("click", defaultText)
 document.getElementById("get-all").addEventListener("click", getAllSonnets)
 document.getElementById("number").addEventListener("click", getSonnetByNumber)
 document.getElementById("word-search").addEventListener("click", getSonnetsByWord)
@@ -95,14 +96,15 @@ function getFibo() {
 }
 
 function getRange(e) {
+  e.preventDefault()
   clear()
   let startRange = document.getElementById("start-range-input").value
   const endRange = document.getElementById("end-range-input").value
-  console.log(startRange,endRange)
-
+  
   if (!e.target.value || !startRange || !endRange) {
     return errorMessage()
   }
+  
   while (startRange <= endRange) {
     renderSonnet(startRange)
     startRange++
@@ -137,29 +139,32 @@ function getAllSonnets() {
   sonnetList.sonnets.map(sonnet => renderSonnet(sonnet.number))
 }
 
+
+function defaultText() {
+  nav.classList.remove("open-nav")
+  document.body.classList.remove("body-overflow")
+  poemContainer.innerHTML = `
+  <h2>Welcome!</h2>
+  <p>Please use the website navigation to display sonnets.</p>
+  <ul>
+  <li><p><strong>Sonnet number</strong> will display your chosen sonnet number.</p></li>
+  <li><p><strong>Search by word</strong> will display all sonnets that contain a word of your choosing.</p></li>
+  <li><p><strong>Divisible by</strong> will display all sonnets divisible by the inputted number.</p></li>
+  <li><p><strong>Range between two</strong> takes two values, and returns all sonnets in range between the two, inclusive of both.</p>
+  <li><p><strong>Proportional sequence</strong> takes a base number, and a list of comma-separated numbers, such as <strong>5, 12, 5</strong>. It will display the sonnet with the base number, and then add your sequence of numbers all the way to 154, repeating them from the start if possible. So, with base 0 and sequence input 5, 12, 5, it will display sonnets <strong>5, 17, 22, 27, 39, 44, 49, 61</strong> until it gets to 154.
+  <li><p><strong>Fibonacci</strong> will display all sonnets that follow the popular number sequence.</p></li>
+  <li><p><strong>Random sonnet</strong> will display a random sonnet.</p></li>
+  <li><p><strong>Clear</strong> will bring you back to this menu.</p></li>
+  </ul>
+  `
+}
+
 function clear() {
   poemContainer.innerHTML = ""
 }
 
-function defaultText() {
-  poemContainer.innerHTML = `
-    <h2>Welcome!</h2>
-    <p>Please use the website navigation to display sonnets.</p>
-    <ul>
-        <li><p><strong>Sonnet number</strong> will display your chosen sonnet number.</p></li>
-        <li><p><strong>Search by word</strong> will display all sonnets that contain a word of your choosing.</p></li>
-        <li><p><strong>Divisible by</strong> will display all sonnets divisible by the inputted number.</p></li>
-        <li><p><strong>Range between two</strong> takes two values, and returns all sonnets in range between the two, inclusive of both.</p>
-        <li><p><strong>Proportional sequence</strong> takes a base number, and a list of comma-separated numbers, such as <strong>5, 12, 5</strong>. It will display the sonnet with the base number, and then add your sequence of numbers all the way to 154, repeating them from the start if possible. So, with base 0 and sequence input 5, 12, 5, it will display sonnets <strong>5, 17, 22, 27, 39, 44, 49, 61</strong> until it gets to 154.
-        <li><p><strong>Fibonacci</strong> will display all sonnets that follow the popular number sequence.</p></li>
-        <li><p><strong>Random sonnet</strong> will display a random sonnet.</p></li>
-        <li><p><strong>Clear</strong> will bring you back to this menu.</p></li>
-    </ul>
-  `
-}
-
 function renderSonnet(i) {
-  nav.classList.remove("open-nav");
+  nav.classList.remove("open-nav")
   document.body.classList.remove("body-overflow")
   if (i <= 154 && i > 0) {
     poemContainer.innerHTML += `<h2>Sonnet Number ${sonnetList.sonnets[i - 1].number}</h2>`
@@ -176,5 +181,3 @@ function renderSonnet(i) {
 }
 
 defaultText()
-
-
